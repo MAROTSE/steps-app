@@ -2,7 +2,9 @@ import { useState } from 'react';
 
 const messages = [
   'Learn React ⚛️',
+  'Internalize the concept',
   'Apply for jobs 💼',
+  'Be grateful to God 👏',
   'Invest your new income 🤑',
 ];
 
@@ -12,6 +14,8 @@ export default function App() {
 
 function Steps() {
   const [step, setStep] = useState(1);
+
+  const [isOpen, setIsOpen] = useState(true);
 
   /*{ conditional rendering for  active class}*/
   const active1 = step >= 1 ? 'active' : '';
@@ -29,26 +33,33 @@ function Steps() {
   }
 
   function handleNext() {
-    if (step < 3) setStep(step + 1);
+    if (step < messages.length) setStep(step + 1);
   }
   return (
-    <div className="steps">
-      <div className="numbers">
-        <div className={active1}>1</div>
-        <div className={active2}>2</div>
-        <div className={active3}>3</div>
-      </div>
-      <p className="message">
-        Step {step} : {messages[step - 1]}
-      </p>
-      <div className="buttons">
-        <button style={styles} onClick={handlePrevious}>
-          Previous
-        </button>
-        <button style={styles} onClick={handleNext}>
-          Next
-        </button>
-      </div>
-    </div>
+    <>
+      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+        ❎
+      </button>
+      {isOpen && (
+        <div className="steps">
+          <div className="numbers">
+            <div className={active1}>1</div>
+            <div className={active2}>2</div>
+            <div className={active3}>3</div>
+          </div>
+          <p className="message">
+            Step {step} : {messages[step - 1]}
+          </p>
+          <div className="buttons">
+            <button style={styles} onClick={handlePrevious}>
+              Previous
+            </button>
+            <button style={styles} onClick={handleNext}>
+              Next
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
