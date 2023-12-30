@@ -11,14 +11,26 @@ export default function App() {
 }
 
 function Steps() {
-  const step = 1;
+  const [step, setStep] = useState(1);
+
+  /*{ conditional rendering for  active class}*/
   const active1 = step >= 1 ? 'active' : '';
   const active2 = step >= 2 ? 'active' : '';
   const active3 = step >= 3 ? 'active' : '';
+
+  /*{styling buttons}*/
   const styles = {
     backgroundColor: '#7950f2',
     color: '#fff',
   };
+
+  function handlePrevious() {
+    if (step > 1) setStep(step - 1);
+  }
+
+  function handleNext() {
+    if (step < 3) setStep(step + 1);
+  }
   return (
     <div className="steps">
       <div className="numbers">
@@ -30,8 +42,12 @@ function Steps() {
         Step {step} : {messages[step - 1]}
       </p>
       <div className="buttons">
-        <button style={styles}>Previous</button>
-        <button style={styles}>Next</button>
+        <button style={styles} onClick={handlePrevious}>
+          Previous
+        </button>
+        <button style={styles} onClick={handleNext}>
+          Next
+        </button>
       </div>
     </div>
   );
