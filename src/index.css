@@ -5,14 +5,16 @@
 body {
   font-family: sans-serif;
   color: #333;
+  background-color: burlywood;
 }
 
 .steps {
-  width: 600px;
+  width: 800px;
+  height: auto;
   background-color: #f7f7f7;
   border-radius: 7px;
   padding: 25px 100px;
-  margin: 100px auto;
+  margin: 50px auto;
 }
 
 .numbers {
@@ -46,6 +48,10 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.page2 {
+  text-align: center;
+  font-size: 30px;
+}
 
 .buttons {
   display: flex;
@@ -76,7 +82,7 @@ h3 {
 }
 
 .close {
-  position: absolute;
+  /* position: absolute; */
   top: 16px;
   right: 16px;
   border: none;

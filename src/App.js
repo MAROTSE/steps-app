@@ -9,7 +9,11 @@ const messages = [
 ];
 
 export default function App() {
-  return <Steps />;
+  return (
+    <div>
+      <Steps />
+    </div>
+  );
 }
 
 function Steps() {
@@ -45,7 +49,7 @@ function Steps() {
       >
         ❎
       </button>
-      {isOpen && (
+      {isOpen ? (
         <div className="steps">
           <div className="numbers">
             <div className={active1}>1</div>
@@ -65,6 +69,10 @@ function Steps() {
               Next
             </button>
           </div>
+        </div>
+      ) : (
+        <div className="page2">
+          <p>Press ❎ button to go back to the previous page!</p>
         </div>
       )}
     </>
