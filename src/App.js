@@ -4,8 +4,8 @@ const messages = [
   'Learn React ⚛️',
   'Internalize the concept',
   'Apply for jobs 💼',
-  'Be grateful to God 👏',
   'Invest your new income 🤑',
+  'Be grateful to God 👏',
 ];
 
 export default function App() {
@@ -21,6 +21,8 @@ function Steps() {
   const active1 = step >= 1 ? 'active' : '';
   const active2 = step >= 2 ? 'active' : '';
   const active3 = step >= 3 ? 'active' : '';
+  const active4 = step >= 4 ? 'active' : '';
+  const active5 = step >= 5 ? 'active' : '';
 
   /*{styling buttons}*/
   const styles = {
@@ -29,15 +31,18 @@ function Steps() {
   };
 
   function handlePrevious() {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) setStep((curStep) => curStep - 1);
   }
 
   function handleNext() {
-    if (step < messages.length) setStep(step + 1);
+    if (step < messages.length) setStep((curStep) => curStep + 1);
   }
   return (
     <>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+      <button
+        className="close"
+        onClick={() => setIsOpen((curIsOpen) => !curIsOpen)}
+      >
         ❎
       </button>
       {isOpen && (
@@ -46,6 +51,8 @@ function Steps() {
             <div className={active1}>1</div>
             <div className={active2}>2</div>
             <div className={active3}>3</div>
+            <div className={active4}>4</div>
+            <div className={active5}>5</div>
           </div>
           <p className="message">
             Step {step} : {messages[step - 1]}
